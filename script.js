@@ -86,20 +86,14 @@ function showQuestion() {
 
 function answer(selection) {
   let question = questions_easy[currentQuestion];
-  console.log('Selected answer is ', selection);
-
   let selectedQuestionNumber = selection.slice(-1);
-  console.log('selectedQuestionNumber is ', selectedQuestionNumber);
-  console.log('Current right answer is ', question['correctAnswer']);
-
   let idOfRightAnswer = `answer_${question['correctAnswer']}`
 
   if (selectedQuestionNumber == question['correctAnswer']) {
-    console.log(' Richtige Antwort! ');
     document.getElementById(selection).parentNode.classList.add('bg-success');
   } else {
-    console.log(' Falsche Antwort! ');
     document.getElementById(selection).parentNode.classList.add('bg-danger');
     document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
   }
+  document.getElementById('next-button').disabled = false;
 }
