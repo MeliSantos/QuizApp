@@ -98,7 +98,21 @@ function answer(selection) {
   document.getElementById('next-button').disabled = false; // der disabled status den wir bei html gegeben haben wird hiermit entfernt
 }
 
-function nextQuestion(){
+function nextQuestion() {
   currentQuestion++; // index von 0 auf 1 bei den Fragen im Json Array
+  document.getElementById('next-button').disabled = true;
+  resetAnswerButton()
   showQuestion(); // wird nun angezeigt weil wir die Funktion aufrufen
+}
+
+function resetAnswerButton() {
+
+  document.getElementById('answer_1').parentNode.classList.remove('bg-danger');
+  document.getElementById('answer_1').parentNode.classList.remove('bg-success');
+  document.getElementById('answer_2').parentNode.classList.remove('bg-danger');
+  document.getElementById('answer_2').parentNode.classList.remove('bg-success');
+  document.getElementById('answer_3').parentNode.classList.remove('bg-danger');
+  document.getElementById('answer_3').parentNode.classList.remove('bg-success');
+  document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
+  document.getElementById('answer_4').parentNode.classList.remove('bg-success');
 }
