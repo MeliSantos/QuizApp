@@ -85,15 +85,20 @@ function showQuestion() {
 }
 
 function answer(selection) {
-  let question = questions_easy[currentQuestion];
-  let selectedQuestionNumber = selection.slice(-1);
-  let idOfRightAnswer = `answer_${question['correctAnswer']}`
+  let question = questions_easy[currentQuestion]; // damit wir wissen um welche Frage es geht oben
+  let selectedQuestionNumber = selection.slice(-1); // hier wird der letzte character von der selection also answer_3 zB die 3 genommen in eine variable um es später bei der if else zu verwenden 
+  let idOfRightAnswer = `answer_${question['correctAnswer']}` // hier wird der value ${question['correctAnswer'] genommen und eine var gegeben um die farbe zu ändern als richtige antwort
 
   if (selectedQuestionNumber == question['correctAnswer']) {
-    document.getElementById(selection).parentNode.classList.add('bg-success');
+    document.getElementById(selection).parentNode.classList.add('bg-success'); // parent.Node -> hier wird sich auf den parent div bezogen 
   } else {
-    document.getElementById(selection).parentNode.classList.add('bg-danger');
-    document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+    document.getElementById(selection).parentNode.classList.add('bg-danger'); // classList.add -> hier wird eine neue classe hinzugefügt (Hier: farbe bei den button)
+    document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success'); // die ID selection wird genommen weil das dasselbe ist wie die ID bei html weil wir eine onclick funktion da stehen haben, die idOfRightAnswer ist die variable oben wo wir die beliebige richtige antwort mit verknüpft haben
   }
-  document.getElementById('next-button').disabled = false;
+  document.getElementById('next-button').disabled = false; // der disabled status den wir bei html gegeben haben wird hiermit entfernt
+}
+
+function nextQuestion(){
+  currentQuestion++; // index von 0 auf 1 bei den Fragen im Json Array
+  showQuestion(); // wird nun angezeigt weil wir die Funktion aufrufen
 }
