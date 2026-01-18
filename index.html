@@ -19,15 +19,56 @@
 </head>
 
 <body onload="init()">
-  <nav class="navbar bg-body-tertiary">
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">QuizApp</span>
+      <a class="navbar-brand" href="#"> Science Quiz </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Schwierigkeitsgrad
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Einfach</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Mittel</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Schwer</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
   <div class="container">
     <div class="card" style="width: 30rem;">
       <img src="./img/questionmark.jpg" class="card-img-top" alt="Fragezeichen">
-      <div class="card-body">
+
+      <div class="card-body" id="endScreen" style="display: none;">
+        <div class="result">
+          <img src="./img/brain result.png" alt="Result" style="width: 50px;">
+          <p style="padding-top: 10px;">Quiz beendet!</p>
+        </div>
+        <div class="score">
+          <p> Du hast <b>0</b> von <b>0</b> Punkten erreicht! </p>
+          <img src="./img/tropy.png" alt="Trophy" style="width: 100px;">
+
+        </div>
+      </div>
+
+      <div class="card-body" id="questionBody">
         <h5 class="card-title" id="question_text">Fragen</h5>
 
         <div class="card quiz-answer-card mb-2" onclick="answer('answer_1')">
@@ -51,7 +92,7 @@
           </div>
         </div>
         <div class="question-footer">
-          <span>  <b>1</b> von <b id="all_questions">5</b> Fragen</span>
+          <span> <b id="question-number">1</b> von <b id="all_questions">5</b> Fragen</span>
           <button onclick="nextQuestion()" class="btn btn-secondary" id="next-button" disabled>Nächste Frage</button>
         </div>
       </div>

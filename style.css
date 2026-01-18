@@ -1,15 +1,17 @@
-body{
-    background-color: rgb(220, 220, 220)!important;
+body {
+    background-color: rgb(220, 220, 220) !important;
 }
-.container{
+
+.container {
     min-height: 100vh;
     background-color: rgb(220, 220, 220);
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
-.question-footer{
+
+.question-footer {
     border-top: 1px solid rgba(0, 0, 0, 0.368);
     padding-top: 12px;
     display: flex;
@@ -18,8 +20,23 @@ body{
 
 }
 
-    
-.quiz-answer-card:hover{
+.quiz-answer-card:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.05);
+}
+
+.result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
