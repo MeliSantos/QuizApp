@@ -18,11 +18,11 @@
 
 </head>
 
-<body onload="init()">
+<body>
 
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"> Science Quiz </a>
+      <a class="navbar-brand" href="index.html"> Science Quiz </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,22 +30,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Schwierigkeitsgrad
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Einfach</a></li>
+              <li><a class="dropdown-item" href="easy.html">Einfach</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Mittel</a></li>
+              <li><a class="dropdown-item" href="middle.html">Mittel</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Schwer</a></li>
+              <li><a class="dropdown-item" href="hard.html">Schwer</a></li>
             </ul>
           </li>
         </ul>
@@ -53,50 +53,17 @@
     </div>
   </nav>
   <div class="container">
-    <div class="card" style="width: 30rem;">
-      <img src="./img/questionmark.jpg" class="card-img-top" alt="Fragezeichen">
+    <div class="card" style="width: 40rem;">
+      <img src="./img/end.jpg" class="card-img-top" alt="Universum">
 
-      <div class="card-body" id="endScreen" style="display: none;">
-        <div class="result">
-          <img src="./img/brain result.png" alt="Result" style="width: 50px;">
-          <p style="padding-top: 10px;">Quiz beendet!</p>
-        </div>
-        <div class="score">
-          <p> Du hast <b>0</b> von <b>0</b> Punkten erreicht! </p>
-          <img src="./img/tropy.png" alt="Trophy" style="width: 100px;">
-
-        </div>
-      </div>
-
-      <div class="card-body" id="questionBody">
-        <h5 class="card-title" id="question_text">Fragen</h5>
-
-        <div class="card quiz-answer-card mb-2" onclick="answer('answer_1')">
-          <div class="card-body" id="answer_1">
-            Antwort
-          </div>
-        </div>
-        <div class="card quiz-answer-card mb-2" onclick="answer('answer_2')">
-          <div class="card-body" id="answer_2">
-            Antwort
-          </div>
-        </div>
-        <div class="card quiz-answer-card mb-2" onclick="answer('answer_3')">
-          <div class="card-body" id="answer_3">
-            Antwort
-          </div>
-        </div>
-        <div class="card quiz-answer-card mb-2" onclick="answer('answer_4')">
-          <div class="card-body" id="answer_4">
-            Antwort
-          </div>
-        </div>
-        <div class="question-footer">
-          <span> <b id="question-number">1</b> von <b id="all_questions">5</b> Fragen</span>
-          <button onclick="nextQuestion()" class="btn btn-secondary" id="next-button" disabled>Nächste Frage</button>
-        </div>
-      </div>
     </div>
+    <div>
+      <h2 style="padding:10px; color: white; text-align: center;"> Bereit für den Realitätscheck deines Wissens? </h2>
+      <p style="padding:10px; color: white; font-size: 16px; text-align: center;">Tauche ein in die faszinierende Welt von Wissenschaft und
+        Astrophysik! Unser Quiz fordert dein Hirn heraus, testet dein Verständnis von Raum, Zeit, Teilchen und
+        kosmischen Rätseln – und zeigt dir, ob in dir das Zeug zum Astrophysiker steckt.</p>
+    </div>
+  </div>
   </div>
 
 </body>

@@ -66,6 +66,7 @@ let questions_easy = [
 ];
 
 let currentQuestion = 0;
+let rightAnsweredQuestions = 0;
 
 function init() {
   document.getElementById('all_questions').innerHTML = questions_easy.length;
@@ -77,11 +78,17 @@ function showQuestion() {
   if (currentQuestion >= questions_easy.length) {
     document.getElementById('endScreen').style = '';
     document.getElementById('questionBody').style = 'display: none';
+
+    document.getElementById('amount-of-questions').innerHTML = questions_easy.length;
+    document.getElementById('amount-of-right-questions').innerHTML = rightAnsweredQuestions;
+    document.getElementById('header-img').src = 'img/milky-way.jpg';
   } else {
 
-
     let question = questions_easy[currentQuestion];
+    let percent = (currentQuestion + 1) / questions_easy.length;
+    percent = Math.round(percent * 100);
 
+    document.getElementById('progressBar').style = `width: ${percent}%`;
     document.getElementById('question-number').innerHTML = currentQuestion + 1;
     document.getElementById('question_text').innerHTML = question['question'];
     document.getElementById('answer_1').innerHTML = question['answer_1'];
@@ -98,6 +105,7 @@ function answer(selection) {
 
   if (selectedQuestionNumber == question['correctAnswer']) {
     document.getElementById(selection).parentNode.classList.add('bg-success'); // parent.Node -> hier wird sich auf den parent div bezogen 
+    rightAnsweredQuestions++;
   } else {
     document.getElementById(selection).parentNode.classList.add('bg-danger'); // classList.add -> hier wird eine neue classe hinzugefügt (Hier: farbe bei den button)
     document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success'); // die ID selection wird genommen weil das dasselbe ist wie die ID bei html weil wir eine onclick funktion da stehen haben, die idOfRightAnswer ist die variable oben wo wir die beliebige richtige antwort mit verknüpft haben
@@ -112,7 +120,7 @@ function nextQuestion() {
   showQuestion(); // wird nun angezeigt weil wir die Funktion aufrufen
 }
 
-function resetAnswerButton() {
+function resetAnswerButton() { // Farbe Buttons soll reseted werden für die nächste Frage
 
   document.getElementById('answer_1').parentNode.classList.remove('bg-danger');
   document.getElementById('answer_1').parentNode.classList.remove('bg-success');
@@ -124,4 +132,13 @@ function resetAnswerButton() {
   document.getElementById('answer_4').parentNode.classList.remove('bg-success');
 }
 
+function restartGame(){
+
+currentQuestion = 0;
+rightAnsweredQuestions = 0;
+ document.getElementById('endScreen').style = 'display: none';
+ document.getElementById('questionBody').style = '';
+
+init();
+}
 
