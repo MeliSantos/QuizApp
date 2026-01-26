@@ -1,93 +1,85 @@
-let questions_easy = [
+
+let questions_medium = [
   {
-    "question": "Was ist die Sonne?",
-    "answer_1": "Ein Planet",
-    "answer_2": "Ein Stern",
-    "answer_3": "Ein Mond",
-    "answer_4": "Ein Komet",
-    "correctAnswer": 2
-  },
-  {
-    "question": "Welcher Planet ist der Erde am nächsten?",
-    "answer_1": "Mars",
-    "answer_2": "Venus",
-    "answer_3": "Jupiter",
-    "answer_4": "Saturn",
-    "correctAnswer": 2
-  },
-  {
-    "question": "Wie heißt unsere Galaxie?",
-    "answer_1": "Andromeda",
-    "answer_2": "Milchstraße",
-    "answer_3": "Orion",
-    "answer_4": "Pegasus",
-    "correctAnswer": 2
-  },
-  {
-    "question": "Was kreist um die Erde?",
-    "answer_1": "Die Sonne",
-    "answer_2": "Der Mars",
-    "answer_3": "Der Mond",
-    "answer_4": "Ein Komet",
+    "question": "Warum hat der Mond verschiedene Phasen?",
+    "answer_1": "Weil er seine Form ändert",
+    "answer_2": "Weil sich der Abstand zur Erde ändert",
+    "answer_3": "Weil wir unterschiedlich beleuchtete Teile sehen",
+    "answer_4": "Wegen Wolken im All",
     "correctAnswer": 3
   },
   {
-    "question": "Welcher Planet ist der größte im Sonnensystem?",
+    "question": "Welcher Planet hat die meisten Monde?",
     "answer_1": "Erde",
-    "answer_2": "Mars",
-    "answer_3": "Jupiter",
-    "answer_4": "Neptun",
-    "correctAnswer": 3
-  },
-  {
-    "question": "Was ist ein schwarzes Loch?",
-    "answer_1": "Ein leerer Raum",
-    "answer_2": "Ein sehr dichter Sternrest",
-    "answer_3": "Ein Planet ohne Licht",
-    "answer_4": "Eine Galaxie",
+    "answer_2": "Jupiter",
+    "answer_3": "Mars",
+    "answer_4": "Venus",
     "correctAnswer": 2
   },
   {
-    "question": "Wie lange braucht das Licht der Sonne zur Erde?",
-    "answer_1": "8 Minuten",
-    "answer_2": "8 Sekunden",
-    "answer_3": "1 Stunde",
-    "answer_4": "1 Tag",
-    "correctAnswer": 1
+    "question": "Was ist ein Lichtjahr?",
+    "answer_1": "Eine Zeiteinheit",
+    "answer_2": "Die Entfernung, die Licht in einem Jahr zurücklegt",
+    "answer_3": "Die Zeit, die die Erde um die Sonne braucht",
+    "answer_4": "Die Entfernung zwischen Erde und Mond",
+    "correctAnswer": 2
   },
   {
-    "question": "Welcher Planet wird der rote Planet genannt?",
-    "answer_1": "Venus",
-    "answer_2": "Mars",
-    "answer_3": "Merkur",
-    "answer_4": "Uranus",
+    "question": "Was verursacht die Jahreszeiten auf der Erde?",
+    "answer_1": "Der Abstand zur Sonne",
+    "answer_2": "Die Erdrotation",
+    "answer_3": "Die Neigung der Erdachse",
+    "answer_4": "Der Mond",
+    "correctAnswer": 3
+  },
+  {
+    "question": "Was ist eine Supernova?",
+    "answer_1": "Die Geburt eines Sterns",
+    "answer_2": "Die Explosion eines massereichen Sterns",
+    "answer_3": "Ein schwarzes Loch",
+    "answer_4": "Ein neuer Planet",
+    "correctAnswer": 2
+  },
+  {
+    "question": "Welche Farbe haben die heißesten Sterne?",
+    "answer_1": "Rot",
+    "answer_2": "Gelb",
+    "answer_3": "Blau",
+    "answer_4": "Weiß",
+    "correctAnswer": 3
+  },
+  {
+    "question": "Warum können wir Sterne tagsüber kaum sehen?",
+    "answer_1": "Sie sind aus",
+    "answer_2": "Die Sonne überstrahlt sie",
+    "answer_3": "Die Atmosphäre blockiert sie",
+    "answer_4": "Sie bewegen sich zu schnell",
     "correctAnswer": 2
   }
 ];
-
 let currentQuestion = 0;
 let rightAnsweredQuestions = 0;
 let AUDIO_right = new Audio('audio/right.mp3');
 let AUDIO_wrong = new Audio('audio/wrong.mp3');
 
 function init() {
-  document.getElementById('all_questions').innerHTML = questions_easy.length;
+  document.getElementById('all_questions').innerHTML = questions_medium.length;
   showQuestion();
 }
 
 function showQuestion() {
 
-  if (currentQuestion >= questions_easy.length) {
+  if (currentQuestion >= questions_medium.length) {
     document.getElementById('endScreen').style = '';
     document.getElementById('questionBody').style = 'display: none';
 
-    document.getElementById('amount-of-questions').innerHTML = questions_easy.length;
+    document.getElementById('amount-of-questions').innerHTML = questions_medium.length;
     document.getElementById('amount-of-right-questions').innerHTML = rightAnsweredQuestions;
     document.getElementById('header-img').src = 'img/milky-way.jpg';
   } else {
 
-    let question = questions_easy[currentQuestion];
-    let percent = (currentQuestion + 1) / questions_easy.length;
+    let question = questions_medium[currentQuestion];
+    let percent = (currentQuestion + 1) / questions_medium.length;
     percent = Math.round(percent * 100);
 
     document.getElementById('progressBar').style = `width: ${percent}%`;
@@ -101,7 +93,7 @@ function showQuestion() {
 }
 
 function answer(selection) {
-  let question = questions_easy[currentQuestion]; // damit wir wissen um welche Frage es geht oben
+  let question = questions_medium[currentQuestion]; // damit wir wissen um welche Frage es geht oben
   let selectedQuestionNumber = selection.slice(-1); // hier wird der letzte character von der selection also answer_3 zB die 3 genommen in eine variable um es später bei der if else zu verwenden 
   let idOfRightAnswer = `answer_${question['correctAnswer']}` // hier wird der value ${question['correctAnswer'] genommen und eine var gegeben um die farbe zu ändern als richtige antwort
 

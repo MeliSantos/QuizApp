@@ -1,93 +1,84 @@
-let questions_easy = [
+let questions_hard = [
   {
-    "question": "Was ist die Sonne?",
-    "answer_1": "Ein Planet",
-    "answer_2": "Ein Stern",
-    "answer_3": "Ein Mond",
-    "answer_4": "Ein Komet",
+    "question": "Was passiert mit der Zeit nahe eines schwarzen Lochs?",
+    "answer_1": "Sie vergeht schneller",
+    "answer_2": "Sie vergeht langsamer",
+    "answer_3": "Sie bleibt stehen",
+    "answer_4": "Sie läuft rückwärts",
     "correctAnswer": 2
   },
   {
-    "question": "Welcher Planet ist der Erde am nächsten?",
-    "answer_1": "Mars",
-    "answer_2": "Venus",
-    "answer_3": "Jupiter",
-    "answer_4": "Saturn",
-    "correctAnswer": 2
-  },
-  {
-    "question": "Wie heißt unsere Galaxie?",
-    "answer_1": "Andromeda",
-    "answer_2": "Milchstraße",
-    "answer_3": "Orion",
-    "answer_4": "Pegasus",
-    "correctAnswer": 2
-  },
-  {
-    "question": "Was kreist um die Erde?",
-    "answer_1": "Die Sonne",
-    "answer_2": "Der Mars",
-    "answer_3": "Der Mond",
-    "answer_4": "Ein Komet",
-    "correctAnswer": 3
-  },
-  {
-    "question": "Welcher Planet ist der größte im Sonnensystem?",
-    "answer_1": "Erde",
-    "answer_2": "Mars",
-    "answer_3": "Jupiter",
-    "answer_4": "Neptun",
-    "correctAnswer": 3
-  },
-  {
-    "question": "Was ist ein schwarzes Loch?",
-    "answer_1": "Ein leerer Raum",
-    "answer_2": "Ein sehr dichter Sternrest",
-    "answer_3": "Ein Planet ohne Licht",
-    "answer_4": "Eine Galaxie",
-    "correctAnswer": 2
-  },
-  {
-    "question": "Wie lange braucht das Licht der Sonne zur Erde?",
-    "answer_1": "8 Minuten",
-    "answer_2": "8 Sekunden",
-    "answer_3": "1 Stunde",
-    "answer_4": "1 Tag",
+    "question": "Was ist dunkle Materie?",
+    "answer_1": "Unsichtbare Materie, die Gravitation ausübt",
+    "answer_2": "Leere im Universum",
+    "answer_3": "Kalte Sterne",
+    "answer_4": "Schwarze Löcher",
     "correctAnswer": 1
   },
   {
-    "question": "Welcher Planet wird der rote Planet genannt?",
-    "answer_1": "Venus",
-    "answer_2": "Mars",
-    "answer_3": "Merkur",
-    "answer_4": "Uranus",
+    "question": "Welche Art von Galaxie ist die Milchstraße?",
+    "answer_1": "Elliptische Galaxie",
+    "answer_2": "Unregelmäßige Galaxie",
+    "answer_3": "Balkenspiralgalaxie",
+    "answer_4": "Kugelgalaxie",
+    "correctAnswer": 3
+  },
+  {
+    "question": "Was passiert, wenn ein Stern seinen Kernbrennstoff verbraucht?",
+    "answer_1": "Er bleibt unverändert",
+    "answer_2": "Er kühlt sofort ab",
+    "answer_3": "Er verändert sich stark",
+    "answer_4": "Er explodiert immer",
+    "correctAnswer": 3
+  },
+  {
+    "question": "Warum können schwarze Löcher nicht direkt gesehen werden?",
+    "answer_1": "Sie existieren nicht",
+    "answer_2": "Sie reflektieren Licht",
+    "answer_3": "Licht kann ihnen nicht entkommen",
+    "answer_4": "Sie sind zu klein",
+    "correctAnswer": 3
+  },
+  {
+    "question": "Was ist kosmische Hintergrundstrahlung?",
+    "answer_1": "Strahlung von der Sonne",
+    "answer_2": "Reststrahlung des Urknalls",
+    "answer_3": "Licht von schwarzen Löchern",
+    "answer_4": "Radiowellen von Planeten",
     "correctAnswer": 2
+  },
+  {
+    "question": "Wie alt ist das Universum ungefähr?",
+    "answer_1": "4,5 Milliarden Jahre",
+    "answer_2": "10 Millionen Jahre",
+    "answer_3": "13,8 Milliarden Jahre",
+    "answer_4": "Unendlich alt",
+    "correctAnswer": 3
   }
 ];
-
 let currentQuestion = 0;
 let rightAnsweredQuestions = 0;
 let AUDIO_right = new Audio('audio/right.mp3');
 let AUDIO_wrong = new Audio('audio/wrong.mp3');
 
 function init() {
-  document.getElementById('all_questions').innerHTML = questions_easy.length;
+  document.getElementById('all_questions').innerHTML = questions_hard.length;
   showQuestion();
 }
 
 function showQuestion() {
 
-  if (currentQuestion >= questions_easy.length) {
+  if (currentQuestion >= questions_hard.length) {
     document.getElementById('endScreen').style = '';
     document.getElementById('questionBody').style = 'display: none';
 
-    document.getElementById('amount-of-questions').innerHTML = questions_easy.length;
+    document.getElementById('amount-of-questions').innerHTML = questions_hard.length;
     document.getElementById('amount-of-right-questions').innerHTML = rightAnsweredQuestions;
     document.getElementById('header-img').src = 'img/milky-way.jpg';
   } else {
 
-    let question = questions_easy[currentQuestion];
-    let percent = (currentQuestion + 1) / questions_easy.length;
+    let question = questions_hard[currentQuestion];
+    let percent = (currentQuestion + 1) / questions_hard.length;
     percent = Math.round(percent * 100);
 
     document.getElementById('progressBar').style = `width: ${percent}%`;
@@ -101,7 +92,7 @@ function showQuestion() {
 }
 
 function answer(selection) {
-  let question = questions_easy[currentQuestion]; // damit wir wissen um welche Frage es geht oben
+  let question = questions_hard[currentQuestion]; // damit wir wissen um welche Frage es geht oben
   let selectedQuestionNumber = selection.slice(-1); // hier wird der letzte character von der selection also answer_3 zB die 3 genommen in eine variable um es später bei der if else zu verwenden 
   let idOfRightAnswer = `answer_${question['correctAnswer']}` // hier wird der value ${question['correctAnswer'] genommen und eine var gegeben um die farbe zu ändern als richtige antwort
 
