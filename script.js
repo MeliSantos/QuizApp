@@ -77,27 +77,40 @@ function init() {
 
 function showQuestion() {
 
-  if (currentQuestion >= questions_easy.length) {
-    document.getElementById('endScreen').style = '';
-    document.getElementById('questionBody').style = 'display: none';
-
-    document.getElementById('amount-of-questions').innerHTML = questions_easy.length;
-    document.getElementById('amount-of-right-questions').innerHTML = rightAnsweredQuestions;
-    document.getElementById('header-img').src = 'img/milky-way.jpg';
-  } else {
-
-    let question = questions_easy[currentQuestion];
-    let percent = (currentQuestion + 1) / questions_easy.length;
-    percent = Math.round(percent * 100);
-
-    document.getElementById('progressBar').style = `width: ${percent}%`;
-    document.getElementById('question-number').innerHTML = currentQuestion + 1;
-    document.getElementById('question_text').innerHTML = question['question'];
-    document.getElementById('answer_1').innerHTML = question['answer_1'];
-    document.getElementById('answer_2').innerHTML = question['answer_2'];
-    document.getElementById('answer_3').innerHTML = question['answer_3'];
-    document.getElementById('answer_4').innerHTML = question['answer_4'];
+  if (gameIsOver()) {
+    showEndScreen();
   }
+  else {
+    updateProgressBar();
+    updateToNextQuestion();
+  }
+}
+function gameIsOver(){
+  return currentQuestion >= questions_easy.length;
+}
+
+function showEndScreen() {
+  document.getElementById('endScreen').style = '';
+  document.getElementById('questionBody').style = 'display: none';
+  document.getElementById('amount-of-questions').innerHTML = questions_easy.length;
+  document.getElementById('amount-of-right-questions').innerHTML = rightAnsweredQuestions;
+  document.getElementById('header-img').src = 'img/milky-way.jpg';
+}
+function updateToNextQuestion() {
+
+  let question = questions_easy[currentQuestion];
+  document.getElementById('question-number').innerHTML = currentQuestion + 1;
+  document.getElementById('question_text').innerHTML = question['question'];
+  document.getElementById('answer_1').innerHTML = question['answer_1'];
+  document.getElementById('answer_2').innerHTML = question['answer_2'];
+  document.getElementById('answer_3').innerHTML = question['answer_3'];
+  document.getElementById('answer_4').innerHTML = question['answer_4'];
+
+}
+function updateProgressBar() {
+  let percent = (currentQuestion + 1) / questions_easy.length;
+  percent = Math.round(percent * 100);
+  document.getElementById('progressBar').style = `width: ${percent}%`;
 }
 
 function answer(selection) {
@@ -105,7 +118,7 @@ function answer(selection) {
   let selectedQuestionNumber = selection.slice(-1); // hier wird der letzte character von der selection also answer_3 zB die 3 genommen in eine variable um es später bei der if else zu verwenden 
   let idOfRightAnswer = `answer_${question['correctAnswer']}` // hier wird der value ${question['correctAnswer'] genommen und eine var gegeben um die farbe zu ändern als richtige antwort
 
-  if (selectedQuestionNumber == question['correctAnswer']) {
+  if (rightAnswerSelected(selectedQuestionNumber)) {
     document.getElementById(selection).parentNode.classList.add('bg-success'); // parent.Node -> hier wird sich auf den parent div bezogen 
     AUDIO_right.play();
     rightAnsweredQuestions++;
@@ -115,6 +128,10 @@ function answer(selection) {
     AUDIO_wrong.play();
   }
   document.getElementById('next-button').disabled = false; // der disabled status den wir bei html gegeben haben wird hiermit entfernt
+}
+
+function rightAnswerSelected(selectedQuestionNumber){
+  return selectedQuestionNumber == question['correctAnswer']
 }
 
 function nextQuestion() {
@@ -136,13 +153,13 @@ function resetAnswerButton() { // Farbe Buttons soll reseted werden für die nä
   document.getElementById('answer_4').parentNode.classList.remove('bg-success');
 }
 
-function restartGame(){
+function restartGame() {
 
-currentQuestion = 0;
-rightAnsweredQuestions = 0;
- document.getElementById('endScreen').style = 'display: none'; // Endscreen ausblenden
- document.getElementById('questionBody').style = ''; // Questionbody wieder anzeigen 
+  currentQuestion = 0;
+  rightAnsweredQuestions = 0;
+  document.getElementById('endScreen').style = 'display: none'; // Endscreen ausblenden
+  document.getElementById('questionBody').style = ''; // Questionbody wieder anzeigen 
 
-init();
+  init();
 }
 
